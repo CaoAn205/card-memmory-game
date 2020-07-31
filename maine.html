@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Card Memory</title>
+	<link rel="stylesheet" href="decor.css">
+	<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+	<script src='jquery-3.5.1.js'></script>
+</head>
+<body>
+	<audio autoplay type="audio/ogg" id='sound'>
+		<source id='correct' src='correct.mp3' type='audio/mpeg'>
+		<source id='incorrect' src='incorrect.mp3' type='audio/mpeg'>
+	</audio>
+	<div class='progress'>
+		<div id='timing-bar'></div>
+	</div>
+	<div class='card-display' style="grid-template-columns: auto auto auto auto auto">
+	</div>
+	<div class = 'box'>
+		<div class='box-notification'>
+			<h1>You </h1>
+			<p class='score'>Score: </p>
+			<div class='btn'>
+				<a class="back-to-start" href="start.html"><button>Back</button></a>
+				<a class="new-game" href="maine.html"><button>Play Again</button></a>
+			</div>
+		</div>
+	</div>
+	<script>
+		var cards = 
+		['card1', 'card2', 'card3', 'card4', 'card5','card1', 'card2', 'card3', 'card4', 'card5'];
+		var current = null;
+		var score = 0;
+		var timeRemain = 100;
+
+		function shuffle(array){
+			var currentIndex = array.length;
+			var randomIndex, temporaryIndex;
+			while(currentIndex != 0){
+				
+				//create random value
+				randomIndex = Math.floor(Math.random()*currentIndex);
+				currentIndex -= 1;
+
+				//shuffle 
+				temporaryIndex = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryIndex;
+			}
+
+			//array = array.concat(array);
+			return array;
+		}
+		$(function (){
+			//recreate an array of cards' file name
+			cards = shuffle(cards);
+			
+			//add html to <body> above
+			html_add = "";
+			for(var i=0; i<cards.length;i++){
+				html_add += "<div class='card' data-name='"+cards[i]+"' onclick='flip(this)'>" +
+				"<div class='front'><img src='"+cards[i]+".png'></div><div class='back'><img src='back.png'></div></div>"
+			}
+			$('.card-display').html(html_add);
+
+			$('.card').dblclick(function(){alert('Do Not Cheating!'); timeRemain-=10;});
+
+			var run = setInterval(function(){
+				timeRemain--;
+				$('#timing-bar').css('width', timeRemain+'%');
+
+				if(timeRemain==0){
+					clearInterval(run);	
+					setTimeout(function(){
+						$('.card-display').css('display', 'none');
+						$('.box').css('display', 'flex');
+						$('h1').append('Lose!');
+						$('p.score').append('-1');
+					}, 1000);
+				}
+			}, 200);
+		});
+
+		function flip(card){
+			$(card).toggleClass('flip');
+			if(!current){
+				current = $(card);
+				current.css('pointer-events', 'none');
+			}
+			else{
+				if($(card).attr('data-name') != current.attr('data-name')){
+					setTimeout(function(){
+						$(card).toggleClass('flip');
+						current.toggleClass('flip');
+						current = null;
+					}, 400);
+					current.css('pointer-events', 'auto');
+				}
+				
+				else{
+					setTimeout(function(){
+						$(card).css('opacity', '0');
+						current.css('opacity', '0');
+						current = null;
+					}, 200);
+					$(card).css('pointer-events', 'none');
+					current.css('pointer-events', 'none');
+					score += 1;
+				}
+			}
+			if(score == 5){
+				var s = Number(timeRemain)*100+1000;
+				timeRemain = -1;
+				$('.card-display').css('display', 'none');
+				$('.box').css('display', 'flex');
+				$('h1').append('Win!');
+				$('p.score').append(s);
+			}
+		}
+	</script>
+</body>
+</html>

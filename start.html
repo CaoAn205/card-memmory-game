@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Start Game</title>
+	<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{
+			background-image: url('background.png');
+			background-size: cover;
+			background-blend-mode: darken;
+		}
+		.property{
+			display: flexbox;
+			height: 20%;
+			width: 50%;
+			margin: 100px auto;
+			background-image: url('background.png'), url('startTheme.jpg');
+			background-blend-mode: color;
+			background-size: cover;
+			color: #e3c22d;
+			border: 7px solid #e3c22d;
+			padding: 10px;
+			box-shadow: 10px 15px 12px #eb7100;
+			font-family: 'Play', sans-serif;
+			border-radius: 2px;
+		}
+		.mode{
+			text-align: center;
+			font-size: 60px;
+		}
+		.mode-button{
+			display: flex;
+			justify-content: space-evenly;
+			align-content: bottom;
+		}
+		button{
+			text-align: center;
+			padding: 10px 20px ;
+			font-size: 20px;
+			color: #e3c22d;
+			border: 3px solid #e3c22d;
+			background-color: inherit;
+			opacity: 0.8;
+			border-radius: 2px;
+			transition: all 0.3s;
+		}
+		button:hover{
+			background-color: #e3c22d;
+			color: black;
+			box-shadow: 2px 5px 5px 0 #b0210b, 2px 6px 7px 0 #a11e0a;
+		}
+		button:active{
+			background-color: #e3c22d;
+			color: black;
+		}
+		button:visited{
+			background-color: #e3c22d;
+			color: black;
+		}
+		.start{
+			height: 120px;
+			width: 200px;
+			margin: auto;
+		}
+		.start-button{
+			width: 200px;
+			opacity: 1;
+			background-color: inherit red;
+			background-blend-mode: darken;
+			font-family: 'Play', sans-serif;
+			font-size: 30px;
+			border-radius: 2px
+		}
+	</style>
+</head>
+<body>
+	<audio autoplay>
+	    <source src="bg.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	<div>
+		<div class='property'>
+			<p class='mode' >Mode
+				<div class='mode-button'>
+					<button onclick='mode(this)'>Easy</button>
+					<button onclick='mode(this)'>Medium</button>
+					<button onclick='mode(this)'>Hard</button>
+				</div>
+			</p>
+			<br><br>
+			<div class="start">
+				<a href="main.html"><button class='start-button'>Start</button></a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var check = null;
+		function mode(clicked){
+			if(clicked.innerHTML == 'Easy'){
+				document.getElementsByTagName('a')[0].href = "file:///C:/Users/HP/Desktop/training_practise/card_memory/maine.html";
+			}
+			else{
+				if(clicked.innerHTML == 'Hard'){
+					document.getElementsByTagName('a')[0].href = "file:///C:/Users/HP/Desktop/training_practise/card_memory/mainh.html";
+				}
+			}
+			if(!check){
+				check = clicked;
+				check.style.color = 'black';
+				check.style.backgroundColor = '#e3c22d';
+			}
+			else{
+				check.style.color = '#e3c22d';
+				check.style.backgroundColor = 'inherit';
+				clicked.style.color = 'black';
+				clicked.style.backgroundColor = '#e3c22d';
+				check = clicked;
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+	<script src='jquery-3.5.1.js'></script>
+	<style type="text/css">
+		.box{
+			display: none;
+			margin: 15% auto;
+			justify-content: center;
+		}
+		.box-notification{
+			height: 25%;
+			width: 20%;
+			display: block;
+			background-image: url('startTheme.jpg');
+			background-size: cover;
+			border: 7px solid #e3c22d;
+			padding: 10px;
+			border-radius: 2px;
+			color: #e3c22d; 
+			font-family: 'Play', sans-serif;
+			padding: 20px;
+		}
+		h2{
+			text-align: center;
+		}
+		p.score{
+			text-indent: 30px;
+		}
+		div.btn{
+			display: flex;
+			justify-content: space-around;
+
+		}
+		button{
+			color: #e3c22d;
+			background-color: inherit;
+			padding: 10px 20px ;
+			text-align: center;
+			border-radius: 2px;
+			border: 3px solid #e3c22d;
+			transition: all 0.3s;
+		}
+		button:hover{
+			background-color: #e3c22d;
+			color: black;
+			box-shadow: 2px 5px 5px 0 #b0210b, 2px 6px 7px 0 #a11e0a;
+		}
+		button:active{
+			background-color: #e3c22d;
+			color: black;
+		}
+		button:visited{
+			background-color: #e3c22d;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class = 'box'>
+		<div class='box-notification'>
+			<h2>You </h2>
+			<p class='score'>Score: </p>
+			<div class='btn'>
+				<a class="back-to-start" href="start.html"><button>Back</button></a>
+				<a class="new game" href="main.html"><button>Play Again</button></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

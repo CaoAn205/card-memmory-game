@@ -1,0 +1,108 @@
+body{
+	background-image: url('background.png');
+	background-size: cover;
+	background-blend-mode: darken;
+}
+
+#timing-bar{
+	background-color: #c21a04;
+	height: 60px;
+	width: 100%;
+	box-shadow: 0px 10px 8px #0f195c;
+	opacity: 0.6;
+	border-radius: 5px;
+}
+
+.card-display{
+	display: grid;
+	margin: 50px;
+	grid-template-rows: auto auto;
+	justify-content: space-evenly;
+	align-content: center;
+	grid-gap: 30px;
+}
+.card{
+	background-size: 170px 255px;
+	position: relative;
+}
+.card img{
+	width: 170px;
+	height: 255px;
+	box-shadow: 5px 10px 8px #888888;
+}
+
+.card .back{
+	transform: rotateY(0deg);
+}
+
+.card .front{
+	transform: rotateY(180deg);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.card.flip .front{
+	transform: rotateY(0deg);
+}
+.card.flip .back{
+	transform: rotateY(180deg);
+}
+
+.card .back, .card .front{
+	transition: transform 200ms;
+	backface-visibility: hidden;
+}
+.box{
+	display: none;
+	margin: 15% auto;
+	justify-content: center;
+}
+.box-notification{
+	height: 30%;
+	width: 20%;
+	display: block;
+	background-image: url('startTheme.jpg');
+	background-size: cover;
+	border: 7px solid #e3c22d;
+	padding: 10px;
+	border-radius: 2px;
+	color: #e3c22d; 
+	font-family: 'Play', sans-serif;
+	padding: 20px;
+}
+h1{
+	text-align: center;
+}
+p.score{
+	text-indent: 30px;
+	font-size: 30px
+}
+div.btn{
+	display: flex;
+	justify-content: space-around;
+}
+button{
+	color: #e3c22d;
+	background-color: inherit;
+	padding: 10px 20px ;
+	text-align: center;
+	border-radius: 2px;
+	border: 3px solid #e3c22d;
+	transition: all 0.3s;
+	font-size: 20px
+}
+button:hover{
+	background-color: #e3c22d;
+	color: black;
+	box-shadow: 2px 5px 5px 0 #b0210b, 2px 6px 7px 0 #a11e0a;
+}
+button:active{
+	background-color: #e3c22d;
+	color: black;
+}
+button:visited{
+	background-color: #e3c22d;
+	color: black;
+}
+
